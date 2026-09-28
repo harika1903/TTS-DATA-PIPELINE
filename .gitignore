@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+# venv & secrets
+venv_tts/
+venv/
+.venv/
+env/
+.env
+*.token
+hf_token*
+secrets*
+# models & runtime data
+*.onnx
+speaker_db*.json
+*.log
+.staging/
+cache/
+# inputs & outputs
+Audios/
+*_Audios/
+results/
+*_results/
+*_dataset/
+*_dataset_removed/
+batch_summary.txt
+batch_summary.csv
+*.jsonl
+*.jsonl.bak
+# audio/media
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.opus
+*.ogg
+# editor/OS
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# web UI working dirs & archives
+web_workdir/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+results*/

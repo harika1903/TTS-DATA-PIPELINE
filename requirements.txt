@@ -1,0 +1,50 @@
+# ============================================================
+# CORE (required for the base pipeline)
+# ============================================================
+numpy>=1.24
+soundfile>=0.12          # requires libsndfile; on Ubuntu: apt install libsndfile1
+faster-whisper>=1.0.0    # transcription + bundled Silero VAD (Whisper pipeline)
+requests>=2.28           # for the custom STT client (tts_pipeline_custom.py)
+
+# ============================================================
+# GPU support (strongly recommended; needed for Demucs/pyannote speed
+# and for Whisper acceleration). Install the CUDA build:
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+# ============================================================
+# torch
+# torchaudio             # also enables the rigorous forced-alignment check
+
+# ============================================================
+# OPTIONAL TOOLS (install one at a time; run check_environment.py after each)
+# The pipeline falls back gracefully if any of these are absent.
+# ============================================================
+
+# --- Objective quality scoring (DNSMOS) ---
+onnxruntime>=1.16        # to run the DNSMOS ONNX model
+librosa>=0.10            # resampling for DNSMOS + audio dedup fingerprint
+# DNSMOS model file (not pip): download sig_bak_ovr.onnx from
+#   github.com/microsoft/DNS-Challenge  ->  DNSMOS/  (MIT licensed)
+
+# --- Source separation (voice vs. music) ---
+# demucs                 # Meta, MIT. pip install demucs
+
+# --- Speaker verification (single-speaker check) ---
+# pyannote.audio         # MIT. pip install pyannote.audio
+#   then accept conditions at hf.co/pyannote/speaker-diarization-3.1 (free)
+#   and create a token at hf.co/settings/tokens
+
+# --- Number normalization (LANGUAGE-SPECIFIC) ---
+# nemo_text_processing   # NVIDIA, Apache 2.0. pip install nemo_text_processing
+#   coverage varies per language; check_environment.py reports which of yours work
+
+# --- Loudness normalization (conservative, optional) ---
+pyloudnorm>=0.1.1
+
+# --- Spellcheck (LANGUAGE-SPECIFIC; needs per-language dictionaries) ---
+# hunspell               # pip install hunspell (+ apt install libhunspell-dev)
+#   plus .dic/.aff dictionary files per language
+
+# ============================================================
+# SYSTEM DEPENDENCY (not pip-installable):
+#   ffmpeg + ffprobe on PATH  ->  sudo apt install ffmpeg
+# ============================================================
